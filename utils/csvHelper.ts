@@ -65,7 +65,7 @@ function getOneJobById(id: number): JobListing[] {
   const jobs: JobListing[] = extractJobListingsFromCSV()
   
 
-  const job: JobListing | null = jobs[id + 1]
+  const job: JobListing | null = jobs[id - 1]
 
   if(job) {
     return [ job ]
@@ -79,5 +79,5 @@ function getOneJobById(id: number): JobListing[] {
 
 export {
   extractJobListingsFromCSV,
-  parseCSVLine
+  getOneJobById
 };
