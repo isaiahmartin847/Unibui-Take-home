@@ -1,15 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-
-interface JobListing {
-  id: number;
-  jobTitle: string;
-  companyName: string;
-  city: string;
-  state: string;
-  jobDescription: string;
-  requirements: string;
-}
+import { Job } from "@/app/types"
 
 function parseCSVLine(line: string): string[] {
   const result: string[] = [];
@@ -36,14 +27,14 @@ function parseCSVLine(line: string): string[] {
   return result;
 }
 
-function extractJobListingsFromCSV(): JobListing[] {
+function extractJobListingsFromCSV(): Job[] {
   const filePath = path.join(process.cwd(), 'public', 'jobs.csv');
   const csvData = fs.readFileSync(filePath, 'utf8');
 
   const lines = csvData.trim().split('\n');
   const headers = parseCSVLine(lines[0]);
 
-  const jobListings: JobListing[] = lines.slice(1).map((line, index) => {
+  const jobListings: Job[] = lines.slice(1).map((line, index) => {
     const values = parseCSVLine(line);
     const [city, state] = values[2].split(',').map(s => s.trim());
     return {
@@ -60,12 +51,12 @@ function extractJobListingsFromCSV(): JobListing[] {
   return jobListings;
 }
 
-function getOneJobById(id: number): JobListing[] {
+function getOneJobById(id: number): Job[] {
   
-  const jobs: JobListing[] = extractJobListingsFromCSV()
+  const jobs: Job[] = extractJobListingsFromCSV()
   
 
-  const job: JobListing | null = jobs[id - 1]
+  const job: Job | null = jobs[id - 1]
 
   if(job) {
     return [ job ]
