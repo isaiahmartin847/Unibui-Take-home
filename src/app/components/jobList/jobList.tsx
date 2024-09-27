@@ -1,4 +1,5 @@
 import { Job, AllJobApiRes } from "@/app/types";
+import JobItem from "./jobItem";
 
 async function getJobs(): Promise<AllJobApiRes> {
   const res = await fetch('http://localhost:3000/api/job/all', { cache: 'no-store' });
@@ -17,7 +18,13 @@ function JobListContent({ jobs }: { jobs: Job[] }) {
       {jobs.length > 0 ? (
         <ul>
           {jobs.map(job => (
-            <li key={job.id}>{job.jobTitle} at {job.companyName} in {job.city}, {job.state}</li>
+            <JobItem 
+              key={job.id}
+              title={job.jobTitle}
+              company={job.companyName}
+              city={job.city}
+              state={job.state}
+              />
           ))}
         </ul>
       ) : (
