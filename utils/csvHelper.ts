@@ -60,4 +60,24 @@ function extractJobListingsFromCSV(): JobListing[] {
   return jobListings;
 }
 
-export default extractJobListingsFromCSV;
+function getOneJobById(id: number): JobListing[] {
+  
+  const jobs: JobListing[] = extractJobListingsFromCSV()
+  
+
+  const job: JobListing | null = jobs[id + 1]
+
+  if(job) {
+    return [ job ]
+  }
+
+  return []
+
+  
+}
+
+
+export {
+  extractJobListingsFromCSV,
+  parseCSVLine
+};

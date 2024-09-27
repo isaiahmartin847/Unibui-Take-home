@@ -1,12 +1,11 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-import extractJobListingsFromCSV from '../../../../../utils/csvHelper';
+import { extractJobListingsFromCSV } from '../../../../../utils/csvHelper';
+
 
 
 export async function GET() {
   try {
-    const jobListings = extractJobListingsFromCSV();
+    const jobListings = extractJobListingsFromCSV()
 
     return NextResponse.json({
       status: 'success',
