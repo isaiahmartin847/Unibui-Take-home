@@ -21,6 +21,7 @@ function JobListContent({ jobs }: { jobs: Job[] }) {
           ))}
         </ul>
       ) : (
+        //this is when no jobs are found make it a bit better and 
         <p>No jobs found.</p>
       )}
     </div>
