@@ -1,7 +1,7 @@
-import { Job } from "@/app/types"
-
+import Link from "next/link"
 
 interface Props {
+    id: number
     city: string
     company: string 
     title: string
@@ -9,7 +9,7 @@ interface Props {
 }
 
 
-const JobItem = async ({ title, company, city, state  }: Props) => {
+const JobItem = async ({ title, company, city, state, id  }: Props) => {
     
     
     return (
@@ -18,6 +18,7 @@ const JobItem = async ({ title, company, city, state  }: Props) => {
             <div>{company}</div>
             <div>{city}</div>
             <div>{state}</div>
+            <Link href={`#${id}`}>More</Link> 
         </div>
     )
 }

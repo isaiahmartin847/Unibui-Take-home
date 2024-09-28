@@ -20,6 +20,7 @@ function JobListContent({ jobs }: { jobs: Job[] }) {
           {jobs.map(job => (
             <JobItem 
               key={job.id}
+              id={job.id}
               title={job.jobTitle}
               company={job.companyName}
               city={job.city}
