@@ -1,17 +1,9 @@
 "use server"
 
-interface JobData {
-  id: number;
-  jobTitle: string;
-  companyName: string;
-  city: string;
-  state: string;
-  jobDescription: string;
-  requirements: string;
-}
+import { Job } from "@/app/types";
 
 interface ApiResponse {
-  job: JobData[];
+  job: Job[];
 }
 
 interface Props {
@@ -20,7 +12,7 @@ interface Props {
   }
 }
 
-async function getJob(id: string): Promise<JobData> {
+async function getJob(id: string): Promise<Job> {
     const res = await fetch(`http://localhost:3000/api/job/${id}`, { cache: 'no-store' });
     
     if (!res.ok) {
@@ -63,5 +55,8 @@ const Page = async ({ params }: Props ) => {
         );
     }
 }
+
+
+// add a location map with a pin 
 
 export default Page
