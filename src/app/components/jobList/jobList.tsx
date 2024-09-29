@@ -14,7 +14,7 @@ async function getJobs(): Promise<AllJobApiRes> {
 function JobListContent({ jobs }: { jobs: Job[] }) {
   return (
     <div>
-      <h1>Jobs</h1>
+
       {jobs.length > 0 ? (
         <ul>
           {jobs.map(job => (

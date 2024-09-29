@@ -18,7 +18,7 @@ const JobItem = async ({ title, company, city, state, id  }: Props) => {
             <div>{company}</div>
             <div>{city}</div>
             <div>{state}</div>
-            <Link href={`#${id}`}>More</Link> 
+            <Link href={`/job/${id}`}>More</Link> 
         </div>
     )
 }
