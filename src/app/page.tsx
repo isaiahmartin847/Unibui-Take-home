@@ -1,11 +1,11 @@
 import JobList from "./components/jobList/jobList";
-import TownMap from "./components/jobPage/worldMap";
+import JobLocation from "./components/jobPage/jobLocation";
 
 export default function Home() {
   return (
     <div>
       <JobList />
-      <TownMap />
+      <JobLocation />
     </div>
   );
 }
