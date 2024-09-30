@@ -1,5 +1,6 @@
 "use server"
 
+import JobLocation from "@/app/components/jobPage/jobLocation";
 import { Job } from "@/app/types";
 
 interface ApiResponse {
@@ -43,6 +44,7 @@ const Page = async ({ params }: Props ) => {
                         <p>{job.requirements || 'No specific requirements listed.'}</p>
                     </div>
                 </div>
+                <JobLocation city={job.city} state={job.state} />
             </div>
         )
     } catch (error) {
