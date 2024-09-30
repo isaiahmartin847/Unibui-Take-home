@@ -10,7 +10,6 @@ interface Props {
 }
 
 const MapAndPin = ({ lon, lat }: Props) => {
-  // Convert lon and lat from string to number
   const position: [number, number] = [parseFloat(lat), parseFloat(lon)];
   
   const CustomIcon = new Icon({
@@ -24,13 +23,15 @@ const MapAndPin = ({ lon, lat }: Props) => {
   });
 
   return (
-    <MapContainer center={position} zoom={10} style={{ height: '400px', width: '100%' }}>
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={position} icon={CustomIcon} />
-    </MapContainer>
+    <div className='flex justify-center'>
+      <MapContainer center={position} zoom={10} className='w-10/12 h-96 border-2 border-black rounded-xl'>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={position} icon={CustomIcon} />
+      </MapContainer>
+    </div>
   );
 };
 

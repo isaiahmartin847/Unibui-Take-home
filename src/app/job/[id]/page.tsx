@@ -39,6 +39,7 @@ const Page = async ({ params }: Props ) => {
                     <p className="mb-2"><strong>Company:</strong> {job.companyName || 'Not specified'}</p>
                     <p className="mb-2"><strong>Location:</strong> {job.city}, {job.state}</p>
                     <p className="mb-4"><strong>Description:</strong> {job.jobDescription || 'No description available'}</p>
+                    <p className="mb-4"><strong>Description:</strong> {job.requirements || 'No retirements available'}</p>
                     <div>
                         <strong>Requirements:</strong>
                         <p>{job.requirements || 'No specific requirements listed.'}</p>

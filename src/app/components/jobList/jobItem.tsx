@@ -1,4 +1,5 @@
 import Link from "next/link"
+import SaveJobBtn from "../savedJobs/saveBtn"
 
 interface Props {
     id: number
@@ -18,6 +19,7 @@ const JobItem = async ({ title, company, city, state, id  }: Props) => {
             <div>{company}</div>
             <div>{city}</div>
             <div>{state}</div>
+            <SaveJobBtn id={id}/>
             <Link href={`/job/${id}`}>More</Link> 
         </div>
     )
