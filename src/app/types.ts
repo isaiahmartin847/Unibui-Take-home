@@ -8,6 +8,16 @@ interface Job {
     jobDescription: string;
     requirements: string;
   }
+
+  // Interface for listing the jobs as items
+  interface JobListItem {
+    id: number
+    city: string
+    company: string 
+    title: string
+    state: string 
+}
+
   
   // Interface for the entire API response
   interface AllJobApiRes {
@@ -16,4 +26,4 @@ interface Job {
     jobs: Job[];
   }
   
-  export type { Job, AllJobApiRes };
+  export type { Job, AllJobApiRes, JobListItem };

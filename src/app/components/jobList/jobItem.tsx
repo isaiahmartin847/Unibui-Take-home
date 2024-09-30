@@ -1,16 +1,10 @@
 import Link from "next/link"
 import SaveJobBtn from "../savedJobs/saveBtn"
-
-interface Props {
-    id: number
-    city: string
-    company: string 
-    title: string
-    state: string 
-}
+import { JobListItem } from "@/app/types"
 
 
-const JobItem = async ({ title, company, city, state, id  }: Props) => {
+
+const JobItem = async ({ title, company, city, state, id  }: JobListItem) => {
     
     
     return (
