@@ -11,18 +11,8 @@ const SaveJobBtn = ( { id }: Props) => {
 
 
     const handleClick = () => {
-        const savedJobs: number[] | null = JSON.parse(localStorage.getItem("savedJobs") || "null");
-
-        if(savedJobs) {
-            const updatedJobs = [...savedJobs, id]
-
-            localStorage.setItem("savedJobs", JSON.stringify(updatedJobs))
-        } else {
-            localStorage.setItem("savedJobs", JSON.stringify([id]))
-        }
-
-
-
+        const savedJobs: number[] = JSON.parse(localStorage.getItem("savedJobs") || "[]");
+        localStorage.setItem("savedJobs", JSON.stringify([...savedJobs, id]));
     }
 
 

@@ -4,7 +4,7 @@ import JobLocation from "@/app/components/jobPage/jobLocation";
 import { Job } from "@/app/types";
 
 interface ApiResponse {
-  job: Job[];
+  jobs: Job[];
 }
 
 interface Props {
@@ -14,17 +14,17 @@ interface Props {
 }
 
 async function getJob(id: string): Promise<Job> {
-    const res = await fetch(`http://localhost:3000/api/job/${id}`, { cache: 'no-store' });
+    const res = await fetch(`http://localhost:3000/api/job?ids=${id}`, { cache: 'no-store' });
     
     if (!res.ok) {
       throw new Error(`Failed to fetch job: ${res.status} ${res.statusText}`);
     }
    
     const data: ApiResponse = await res.json();
-    if (!data.job || data.job.length === 0) {
+    if (!data.jobs || data.jobs.length === 0) {
       throw new Error('No job data found');
     }
-    return data.job[0];
+    return data.jobs[0];
 }
 
 const Page = async ({ params }: Props ) => {
