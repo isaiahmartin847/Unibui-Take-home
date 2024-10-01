@@ -13,7 +13,7 @@ const FilterForm = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault() 
-        router.push(`/filter?state=${state}&city=${city}&title=${title}`)
+        router.push(`/?state=${state}&city=${city}&title=${title}`)
     }
 
     return (

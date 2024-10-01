@@ -1,4 +1,5 @@
 import JobItem from "../components/jobList/jobItem";
+import NavBar from "../components/NavBar/NavBar";
 import { Job } from "../types";
 
 // Server-side function to fetch jobs with query params
@@ -8,9 +9,9 @@ async function fetchJobs(params: { state?: string; title?: string; city?: string
   
   const response = await fetch(`http://localhost:3000/api/job/filter?${queryParams.toString()}`, {
     headers: {
-      'Cache-Control': 'no-store', // Prevent caching
-      'Pragma': 'no-cache',         // HTTP 1.0 compatibility
-      'Expires': '0',               // Proxies
+      'Cache-Control': 'no-store', 
+      'Pragma': 'no-cache',         
+      'Expires': '0',               
     },
   });
 
@@ -27,17 +28,7 @@ export default async function FilterPage({ searchParams }: { searchParams: { sta
 
   return (
     <div>
-      <h1>Filtered Job Listings</h1>
-      <p>Status: {status}</p>
-      <p>Total Jobs: {totalJobs}</p>
-
-      {/* Show the filters applied */}
-      <div>
-        {state && <p>Filtered by State: {state}</p>}
-        {title && <p>Filtered by Title: {title}</p>}
-        {city && <p>Filtered by City: {city}</p>}
-      </div>
-
+      <NavBar filter={true} linkName="Home" title="Jobs" url="/"/>
       <ul>
         {jobs.length > 0 ? (
           jobs.map((job: Job, index: number) => (
