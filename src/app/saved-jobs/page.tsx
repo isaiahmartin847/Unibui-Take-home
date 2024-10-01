@@ -5,25 +5,28 @@ import SavedJobItem from "../components/savedJobs/savedJobItem";
 import { Job } from "../types";
 
 const SavedJobs = () => {
-    const [savedJobs, setSavedJobs] = useState<number[]>(() => {
-        return JSON.parse(localStorage.getItem("savedJobs") || "[]");
-    });
-    const [loading, setLoading] = useState<boolean>(false);
-    const [data, setData] = useState<any>(null);
+    const [savedJobs, setSavedJobs] = useState<number[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [data, setData] = useState<Job[]>([]);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        const savedJobsFromStorage = JSON.parse(localStorage.getItem("savedJobs") || "[]");
+        setSavedJobs(savedJobsFromStorage);
+        
         const fetchJobs = async () => {
-            if (savedJobs.length === 0) return;
+            if (savedJobsFromStorage.length === 0) {
+                setLoading(false);
+                return;
+            }
 
-            setLoading(true);
             try {
-                const response = await fetch(`http://localhost:3000/api/job?ids=${savedJobs}`);
+                const response = await fetch(`http://localhost:3000/api/job?ids=${savedJobsFromStorage.join(',')}`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch jobs.");
                 }
                 const result = await response.json();
-                setData(result.jobs); // Only store the jobs array from the response
+                setData(result.jobs);
             } catch (err) {
                 setError((err as Error).message || "An unknown error occurred");
             } finally {
@@ -33,27 +36,13 @@ const SavedJobs = () => {
 
         fetchJobs();
     }, []);
-    
-    
 
     const handleClick = (id: number) => {
-    
-        //filter the local storage and update it
         const filteredJobs = savedJobs.filter((jobId) => jobId !== id);
         setSavedJobs(filteredJobs);
         localStorage.setItem("savedJobs", JSON.stringify(filteredJobs));
 
-        //remove the job with the id from data 
-        setData((data: Job[]) => {
-            return data.filter((job) => job.id !== id)
-        })
-        console.log(data)
-
-    }
-
-
-    if (savedJobs.length === 0) {
-        return <div>You have no saved jobs</div>;
+        setData((prevData) => prevData.filter((job) => job.id !== id));
     }
 
     if (loading) {
@@ -64,11 +53,15 @@ const SavedJobs = () => {
         return <div>Error: {error}</div>;
     }
 
+    if (savedJobs.length === 0) {
+        return <div>You have no saved jobs</div>;
+    }
+
     return (
         <div>
-            {data ? (
+            {data.length > 0 ? (
                 <div>
-                    {data.map((job: any) => (
+                    {data.map((job: Job) => (
                         <div key={job.id} className="flex justify-evenly">
                             <SavedJobItem
                                  id={job.id}
@@ -77,11 +70,10 @@ const SavedJobs = () => {
                                  city={job.city}
                                  state={job.state}
                             />
-                            <button className="border-2 border-black bg-red-500" onClick={() => {handleClick(job.id)}}>Remove</button>
+                            <button className="border-2 border-black bg-red-500" onClick={() => handleClick(job.id)}>Remove</button>
                         </div>
                     ))}
                 </div>
-            
             ) : (
                 <div>No jobs found</div>
             )}
@@ -90,4 +82,3 @@ const SavedJobs = () => {
 };
 
 export default SavedJobs;
-

@@ -26,7 +26,7 @@ const getLocation = async (state: string, city: string) => {
 const JobLocation = async ({ city, state }: Props) => {
     try {
         const data = await getLocation(state, city);
-        console.log([data.lat, data.lon]);
+        
 
         return (
             <div>
