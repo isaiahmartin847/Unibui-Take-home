@@ -4,7 +4,7 @@ import { Job } from "../types";
 // Server-side function to fetch jobs with query params
 async function fetchJobs(params: { state?: string; title?: string; city?: string }) {
   const queryParams = new URLSearchParams(params as Record<string, string>);
-  console.log(queryParams.toString());
+  
   
   const response = await fetch(`http://localhost:3000/api/job/filter?${queryParams.toString()}`, {
     headers: {

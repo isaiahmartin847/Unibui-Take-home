@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import SavedJobItem from "../components/savedJobs/savedJobItem";
 import { Job } from "../types";
+import NavBar from "../components/NavBar/NavBar";
 
 const SavedJobs = () => {
     const [savedJobs, setSavedJobs] = useState<number[]>([]);
@@ -54,11 +55,17 @@ const SavedJobs = () => {
     }
 
     if (savedJobs.length === 0) {
-        return <div>You have no saved jobs</div>;
+        return (
+        <div>
+            <NavBar linkName="home" title="Saved Jobs" url="/"/>
+            <div>You have no saved jobs</div>
+        </div>
+    )
     }
 
     return (
         <div>
+            <NavBar linkName="home" title="Saved Jobs" url="/"/>
             {data.length > 0 ? (
                 <div>
                     {data.map((job: Job) => (
