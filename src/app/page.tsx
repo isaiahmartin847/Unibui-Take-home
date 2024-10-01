@@ -20,11 +20,11 @@ async function fetchJobs(params: { state?: string; title?: string; city?: string
 }
 
 // Server Component for rendering filtered jobs
-export default async function FilterPage({ searchParams }: { searchParams: { state?: string; title?: string; city?: string } }) {
+export default async function Page({ searchParams }: { searchParams: { state?: string; title?: string; city?: string } }) {
   const { state, title, city } = searchParams;
 
   // Fetch the filtered jobs based on the search params
-  const { jobs, totalJobs, status } = await fetchJobs({ state, title, city });
+  const { jobs } = await fetchJobs({ state, title, city });
 
   return (
     <div>
@@ -42,29 +42,9 @@ export default async function FilterPage({ searchParams }: { searchParams: { sta
             />
           ))
         ) : (
-          <p>No jobs found for the applied filters.</p>
+          <div className="text-center text-2xl mt-5">No jobs found for the applied filters.</div>
         )}
       </ul>
     </div>
   );
 }
-
-// import FilterForm from "./components/filter/filterForm";
-// import JobList from "./components/jobList/jobList";
-// import NavBar from "./components/NavBar/NavBar";
-
-
-// export default function Home() {
-//   return (
-//     <div>
-//       <NavBar
-//         title="Jobs"
-//         linkName="Saved Jobs"
-//         url="/saved-jobs"
-//         filter={true}
-//       />
-//       {/* <FilterForm /> */}
-//       {/* <JobList /> */}
-//     </div>
-//   );
-// }
