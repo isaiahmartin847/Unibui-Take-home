@@ -34,7 +34,7 @@ const FilterForm = () => {
     }
 
     return (
-        <div className="p-2 border-b-[1px] border-black">
+        <div className="p-2 border-b-[1px] border-black flex flex-col flex-wrap">
             <form onSubmit={handleSubmit} className="flex flex-col md:flex-row justify-between">
                 <div className="w-full md:w-[90%] space-y-4 md:space-y-0 md:space-x-4 flex flex-col md:flex-row items-start md:items-center">
                     <label className="text-lg w-full md:w-auto">
@@ -85,7 +85,7 @@ const FilterForm = () => {
                         type="submit" 
                         className="border-2 border-blue-500 p-1 rounded-lg w-full md:w-auto"
                     >
-                        Filter
+                        Apply
                     </button>    
                 </div>
             </form>

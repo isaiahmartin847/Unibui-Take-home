@@ -1,6 +1,7 @@
 "use server"
 
 import JobLocation from "@/app/components/jobPage/jobLocation";
+import NavBar from "@/app/components/NavBar/NavBar";
 import { Job } from "@/app/types";
 
 interface ApiResponse {
@@ -33,7 +34,7 @@ const Page = async ({ params }: Props ) => {
 
         return (
             <div className="p-4">
-                <h1 className="text-2xl font-bold mb-4">Job Details</h1>
+                <NavBar filter={false} linkName="Home" title="Job Details" url="/"/>
                 <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <h2 className="text-xl font-semibold mb-2">{job.jobTitle || 'No title available'}</h2>
                     <p className="mb-2"><strong>Company:</strong> {job.companyName || 'Not specified'}</p>
