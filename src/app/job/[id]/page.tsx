@@ -33,7 +33,7 @@ const Page = async ({ params }: Props ) => {
         const job = await getJob(params.id);
 
         return (
-            <div className="p-4">
+            <div className="">
                 <NavBar filter={false} linkName="Home" title="Job Details" url="/"/>
                 <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <h2 className="text-xl font-semibold mb-2">{job.jobTitle || 'No title available'}</h2>
