@@ -1,9 +1,12 @@
 "use client";
 
+
 import { useState, useEffect } from "react";
 import SavedJobItem from "../components/savedJobs/savedJobItem";
 import { Job } from "../types";
 import NavBar from "../components/NavBar/NavBar";
+import { ScaleLoader } from "react-spinners";
+import Link from "next/link";
 
 const SavedJobs = () => {
     const [savedJobs, setSavedJobs] = useState<number[]>([]);
@@ -47,25 +50,31 @@ const SavedJobs = () => {
     }
 
     if (loading) {
-        return <div>Loading...</div>;
+        return (
+            <div>
+                <NavBar linkName="home" title="Saved Jobs" url="/" filter={false}/>
+                <div className="flex flex-col items-center mt-10">
+                    <ScaleLoader color="#f97316" />
+                    <div className="text-xl">Loadin</div>
+                </div>
+                
+            </div>
+        )
     }
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return (
+            <div>
+                <NavBar linkName="home" title="Saved Jobs" url="/" filter={false}/>
+                <div>Error: {error}</div>;
+            </div>
+        )
     }
 
-    if (savedJobs.length === 0) {
-        return (
-        <div>
-            <NavBar linkName="home" title="Saved Jobs" url="/"/>
-            <div>You have no saved jobs</div>
-        </div>
-    )
-    }
 
     return (
         <div>
-            <NavBar linkName="home" title="Saved Jobs" url="/"/>
+            <NavBar linkName="home" title="Saved Jobs" url="/" filter={false}/>
             {data.length > 0 ? (
                 <div>
                     {data.map((job: Job) => (
@@ -76,13 +85,16 @@ const SavedJobs = () => {
                                  company={job.companyName}
                                  city={job.city}
                                  state={job.state}
+                                 handleClick={handleClick}
                             />
-                            <button className="border-2 border-black bg-red-500" onClick={() => handleClick(job.id)}>Remove</button>
                         </div>
                     ))}
                 </div>
             ) : (
-                <div>No jobs found</div>
+                <div className="flex flex-col items-center mt-10">
+                    <h1 className="text-xl">You have no saved jobs?</h1>
+                    <Link href="/" prefetch={true} className="border-2 border-orange-400 p-2 mt-2 hover:bg-orange-400 rounded-md">Back to jobs</Link>
+                </div>
             )}
         </div>
     );

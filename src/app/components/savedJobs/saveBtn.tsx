@@ -21,7 +21,7 @@ const SaveJobBtn = ({ id }: Props) => {
     const handleClick = () => {
         setIsSaved(true)
         const savedJobs: number[] = JSON.parse(localStorage.getItem("savedJobs") || "[]")
-        localStorage.setItem("savedJobs", JSON.stringify([...savedJobs, id]))
+        localStorage.setItem("savedJobs", JSON.stringify([id, ...savedJobs]))
     }
 
     return (

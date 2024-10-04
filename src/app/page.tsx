@@ -26,6 +26,7 @@ export default async function Page({ searchParams }: { searchParams: { state?: s
   // Fetch the filtered jobs based on the search params
   const { jobs } = await fetchJobs({ state, title, city });
 
+
   return (
     <div>
       <NavBar filter={true} linkName="Saved Jobs" title="Jobs" url="/saved-jobs"/>
@@ -42,7 +43,7 @@ export default async function Page({ searchParams }: { searchParams: { state?: s
             />
           ))
         ) : (
-          <div className="text-center text-2xl mt-5">No jobs found for the applied filters.</div>
+          <div className="text-center text-2xl mt-5">No Jobs Found.</div>
         )}
       </ul>
     </div>

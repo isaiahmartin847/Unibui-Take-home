@@ -5,7 +5,7 @@ import NavBar from "@/app/components/NavBar/NavBar";
 import { Job } from "@/app/types";
 
 interface ApiResponse {
-  jobs: Job[];
+  job: Job[];
 }
 
 interface Props {
@@ -15,17 +15,17 @@ interface Props {
 }
 
 async function getJob(id: string): Promise<Job> {
-    const res = await fetch(`http://localhost:3000/api/job?ids=${id}`, { cache: 'no-store' });
+    const res = await fetch(`http://localhost:3000/api/job/${id}`, { cache: 'no-store' });
     
     if (!res.ok) {
       throw new Error(`Failed to fetch job: ${res.status} ${res.statusText}`);
     }
    
     const data: ApiResponse = await res.json();
-    if (!data.jobs || data.jobs.length === 0) {
+    if (!data.job || data.job.length === 0) {
       throw new Error('No job data found');
     }
-    return data.jobs[0];
+    return data.job[0];
 }
 
 const Page = async ({ params }: Props ) => {
@@ -33,7 +33,7 @@ const Page = async ({ params }: Props ) => {
         const job = await getJob(params.id);
 
         return (
-            <div className="">
+            <div>
                 <NavBar filter={false} linkName="Home" title="Job Details" url="/"/>
                 <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <h2 className="text-xl font-semibold mb-2">{job.jobTitle || 'No title available'}</h2>

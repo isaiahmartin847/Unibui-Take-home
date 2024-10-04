@@ -19,8 +19,8 @@ const NavBar = ({ title, linkName, url, filter }: Props) => {
     }
 
     return (
-        <div>
-            <div className="flex justify-between items-center h-20 px-5 py-2 border-b-2 border-black">
+        <div className="sticky top-0 bg-white shadow-lg">
+            <div className="flex justify-between items-center h-20 px-5 py-2 border-b-2 border-black ">
                 {/* Logo Section */}
                 <div className="w-[200px]">
                     <Link href={"/"}>
