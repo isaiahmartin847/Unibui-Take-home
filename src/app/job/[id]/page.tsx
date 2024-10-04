@@ -1,6 +1,7 @@
 "use server"
 
 import JobLocation from "@/app/components/jobPage/jobLocation";
+import JobPageItem from "@/app/components/jobPage/jobPageItem";
 import NavBar from "@/app/components/NavBar/NavBar";
 import { Job } from "@/app/types";
 
@@ -35,17 +36,16 @@ const Page = async ({ params }: Props ) => {
         return (
             <div>
                 <NavBar filter={false} linkName="Home" title="Job Details" url="/"/>
-                <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    <h2 className="text-xl font-semibold mb-2">{job.jobTitle || 'No title available'}</h2>
-                    <p className="mb-2"><strong>Company:</strong> {job.companyName || 'Not specified'}</p>
-                    <p className="mb-2"><strong>Location:</strong> {job.city}, {job.state}</p>
-                    <p className="mb-4"><strong>Description:</strong> {job.jobDescription || 'No description available'}</p>
-                    <p className="mb-4"><strong>Description:</strong> {job.requirements || 'No retirements available'}</p>
-                    <div>
-                        <strong>Requirements:</strong>
-                        <p>{job.requirements || 'No specific requirements listed.'}</p>
-                    </div>
-                </div>
+                <JobPageItem 
+                  city={job.city} 
+                  companyName={job.companyName} 
+                  id={job.id} 
+                  jobDescription={job.jobDescription}
+                  jobTitle={job.jobTitle}
+                  requirements={job.requirements}
+                  state={job.state}
+                  key={job.id}/>
+                  
                 <JobLocation city={job.city} state={job.state} />
             </div>
         )
