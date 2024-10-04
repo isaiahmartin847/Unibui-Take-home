@@ -24,7 +24,7 @@ const MapAndPin = ({ lon, lat }: Props) => {
 
   return (
     <div className='flex justify-center'>
-      <MapContainer center={position} zoom={10} className='w-10/12 h-96 border-2 border-black rounded-xl'>
+      <MapContainer center={position} zoom={10} className='h-96 w-full m-1 border-[1px] border-black rounded-md md:w-10/12'>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
