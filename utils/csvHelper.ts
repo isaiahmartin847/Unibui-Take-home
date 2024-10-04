@@ -1,10 +1,10 @@
-import fs from 'fs';
-import path from 'path';
-import { Job } from "@/app/types"
+import fs from "fs";
+import path from "path";
+import { Job } from "@/app/types";
 
 function parseCSVLine(line: string): string[] {
   const result: string[] = [];
-  let currentField = '';
+  let currentField = "";
   let inQuotes = false;
 
   for (let i = 0; i < line.length; i++) {
@@ -16,9 +16,9 @@ function parseCSVLine(line: string): string[] {
       } else {
         inQuotes = !inQuotes;
       }
-    } else if (char === ',' && !inQuotes) {
+    } else if (char === "," && !inQuotes) {
       result.push(currentField.trim());
-      currentField = '';
+      currentField = "";
     } else {
       currentField += char;
     }
@@ -28,15 +28,15 @@ function parseCSVLine(line: string): string[] {
 }
 
 function extractJobListingsFromCSV(): Job[] {
-  const filePath = path.join(process.cwd(), 'public', 'jobs.csv');
-  const csvData = fs.readFileSync(filePath, 'utf8');
+  const filePath = path.join(process.cwd(), "public", "jobs.csv");
+  const csvData = fs.readFileSync(filePath, "utf8");
 
-  const lines = csvData.trim().split('\n');
-  const headers = parseCSVLine(lines[0]);
+  const lines = csvData.trim().split("\n");
+  // const headers = parseCSVLine(lines[0]);
 
   const jobListings: Job[] = lines.slice(1).map((line, index) => {
     const values = parseCSVLine(line);
-    const [city, state] = values[2].split(',').map(s => s.trim());
+    const [city, state] = values[2].split(",").map((s) => s.trim());
     return {
       id: index + 1,
       jobTitle: values[0],
@@ -52,23 +52,15 @@ function extractJobListingsFromCSV(): Job[] {
 }
 
 function getOneJobById(id: number): Job[] {
-  
-  const jobs: Job[] = extractJobListingsFromCSV()
-  
+  const jobs: Job[] = extractJobListingsFromCSV();
 
-  const job: Job | null = jobs[id - 1]
+  const job: Job | null = jobs[id - 1];
 
-  if(job) {
-    return [ job ]
+  if (job) {
+    return [job];
   }
 
-  return []
-
-  
+  return [];
 }
 
-
-export {
-  extractJobListingsFromCSV,
-  getOneJobById
-};
+export { extractJobListingsFromCSV, getOneJobById };

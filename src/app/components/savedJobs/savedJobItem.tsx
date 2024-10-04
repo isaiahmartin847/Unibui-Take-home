@@ -20,7 +20,7 @@ const SavedJobItem: React.FC<Props> = ({
 }) => {
   return (
     <div className="flex justify-center w-full">
-      <div className="flex flex-col md:flex-row items-center justify-between w-full md:w-5/12 h-40 p-2 my-2 border-[1.5px] border-black rounded-lg shadow-md">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full md:w-5/12 h-40 p-2 my-2 mx-1 border-[1.5px] border-black rounded-lg shadow-md">
         <div className="space-y-3 space-x-5 w-5/6 md:w-3/5 md:pl-10">
           <div className="text-2xl font-serif font-semibold text-orange-500">
             {title}

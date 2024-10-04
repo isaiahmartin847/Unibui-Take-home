@@ -68,7 +68,7 @@ export async function GET(
       jobs: filteredJobs,
     });
   } catch (error) {
-    console.error("Error processing request:", error);
+    console.log("internal server error", error);
     return NextResponse.json(
       { status: "error", message: "Failed to fetch job listings" },
       { status: 500 }

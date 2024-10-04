@@ -65,7 +65,9 @@ const Page = async ({ params }: Props) => {
     return (
       <div className="p-4">
         <h1 className="text-2xl font-bold mb-4">Error</h1>
-        <p>Sorry, we couldn't load the job details. Please try again later.</p>
+        <p>
+          Sorry, we couldn&apos;t load the job details. Please try again later.
+        </p>
       </div>
     );
   }

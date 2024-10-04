@@ -1,11 +1,27 @@
 "use server";
 
-import { stat } from "fs";
 import MapAndPin from "./map";
 
 interface Props {
   state: string;
   city: string;
+}
+
+interface LocationResponse {
+  place_id: number;
+  licence: string;
+  osm_type: string;
+  osm_id: number;
+  lat: string;
+  lon: string;
+  class: string;
+  type: string;
+  place_rank: number;
+  importance: number;
+  addresstype: string;
+  name: string;
+  display_name: string;
+  boundingbox: string[];
 }
 
 const getLocation = async (state: string, city: string) => {
@@ -20,8 +36,8 @@ const getLocation = async (state: string, city: string) => {
     );
   }
 
-  const data: any = await res.json();
-  return data[0]; // Returns the first result
+  const data: LocationResponse[] = await res.json();
+  return data[0];
 };
 
 const JobLocation = async ({ city, state }: Props) => {

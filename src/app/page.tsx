@@ -35,6 +35,7 @@ async function fetchJobs(params: {
     return data;
   } catch (error) {
     return {
+      error: error,
       status: "error",
       message: "Failed to fetch job listings",
     };
