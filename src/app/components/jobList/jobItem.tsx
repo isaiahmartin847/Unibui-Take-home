@@ -2,6 +2,9 @@ import Link from "next/link";
 import SaveJobBtn from "../savedJobs/saveBtn";
 import { JobListItem } from "@/app/types";
 
+// Documentation for this component can be found at:
+// /docs/components_&_pages/job_list_page
+
 const JobItem = async ({ title, company, city, state, id }: JobListItem) => {
   return (
     <div className="flex justify-center">

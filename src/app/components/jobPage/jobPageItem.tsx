@@ -1,6 +1,9 @@
 import SaveJobBtn from "../savedJobs/saveBtn";
 import { Job } from "@/app/types";
 
+// Documentation for this component can be found at:
+// /docs/components_&_pages/job_page.md
+
 const JobPageItem = async ({
   city,
   companyName,

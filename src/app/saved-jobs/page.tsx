@@ -7,6 +7,9 @@ import { ScaleLoader } from "react-spinners";
 import Link from "next/link";
 import Navbar from "../components/Navbar/Navbar";
 
+// Documentation for this component can be found at:
+// /docs/components_&_pages/saved_jobs.md
+
 const SavedJobs = () => {
   const [savedJobs, setSavedJobs] = useState<number[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

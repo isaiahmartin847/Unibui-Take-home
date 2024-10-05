@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { extractJobListingsFromCSV } from "../../../../utils/csvHelper";
 import { Job } from "@/app/types";
 
+// Documentation for this component can be found at:
+// /docs/api.md
+
 interface SuccessResponse {
   status: "success";
   totalJobs: number;
@@ -42,11 +45,9 @@ export async function GET(
     let filteredJobs: Job[];
 
     if (ids) {
-      // Filter by IDs if provided
       const jobIds = ids.split(",").map(Number);
       filteredJobs = jobListings.filter((job) => jobIds.includes(job.id));
     } else {
-      // Filter based on other criteria
       filteredJobs = jobListings.filter((job) => {
         const matchesState = state
           ? job.state.toLowerCase() === state.toLowerCase()

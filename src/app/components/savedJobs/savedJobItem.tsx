@@ -10,6 +10,9 @@ interface HandleClickProps {
 
 type Props = JobListItem & HandleClickProps;
 
+// Documentation for this component can be found at:
+// /docs/components_&_pages/saved_jobs.md
+
 const SavedJobItem = ({
   city,
   company,

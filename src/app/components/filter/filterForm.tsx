@@ -1,6 +1,11 @@
+"use client";
+
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { IoMdClose } from "react-icons/io";
+
+// Documentation for this component can be found at:
+// /docs/components_&_pages/filter
 
 const FilterForm = () => {
   const [title, setTitle] = useState("");

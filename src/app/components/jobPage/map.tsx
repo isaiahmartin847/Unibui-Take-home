@@ -4,6 +4,9 @@ import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
 
+// Documentation for this component can be found at:
+// /docs/components_&_pages/job_page.md
+
 interface Props {
   lon: string;
   lat: string;

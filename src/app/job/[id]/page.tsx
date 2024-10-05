@@ -5,6 +5,9 @@ import JobPageItem from "@/app/components/jobPage/jobPageItem";
 import Navbar from "@/app/components/Navbar/Navbar";
 import { Job } from "@/app/types";
 
+// Documentation for this component can be found at:
+// /docs/components_&_pages/job_page.md
+
 interface ApiResponse {
   job: Job[];
 }

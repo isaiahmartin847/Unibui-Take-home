@@ -5,6 +5,9 @@ import { Job } from "./types";
 export const revalidate = 0;
 export const dynamic = "force-dynamic";
 
+// Documentation for this component can be found at:
+// /docs/components_&_pages/job_list_page.md
+
 async function fetchJobs(params: {
   state?: string;
   title?: string;

@@ -2,6 +2,9 @@
 
 import MapAndPin from "./map";
 
+// Documentation for this component can be found at:
+// /docs/components_&_pages/job_page.md
+
 interface Props {
   state: string;
   city: string;

@@ -6,6 +6,9 @@ interface Props {
   id: number;
 }
 
+// Documentation for this component can be found at:
+// /docs/components_&_pages/saved_jobs.md
+
 const SaveJobBtn = ({ id }: Props) => {
   const [isSaved, setIsSaved] = useState<boolean>(false);
 

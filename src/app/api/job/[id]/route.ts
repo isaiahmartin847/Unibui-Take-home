@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getOneJobById } from "../../../../../utils/csvHelper";
 
+// Documentation for this component can be found at:
+// /docs/api.md
+
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }

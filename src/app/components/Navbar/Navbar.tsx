@@ -5,6 +5,9 @@ import Link from "next/link";
 import { useState } from "react";
 import FilterForm from "@/app/components/filter/filterForm";
 
+// Documentation for this component can be found at:
+// /docs/components_&_pages/navbar.md
+
 interface Props {
   title: string;
   url: string;
