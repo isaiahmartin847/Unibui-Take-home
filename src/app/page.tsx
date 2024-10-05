@@ -2,11 +2,9 @@ import JobItem from "./components/jobList/jobItem";
 import Navbar from "./components/Navbar/Navbar";
 import { Job } from "./types";
 
-// Disable SSR caching
 export const revalidate = 0;
 export const dynamic = "force-dynamic";
 
-// Server-side function to fetch jobs with query params and handle errors
 async function fetchJobs(params: {
   state?: string;
   title?: string;

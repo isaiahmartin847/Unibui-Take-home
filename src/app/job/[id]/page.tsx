@@ -43,6 +43,7 @@ const Page = async ({ params }: Props) => {
           title="Job Details"
           url="/"
         />
+
         <JobPageItem
           city={job.city}
           companyName={job.companyName}
