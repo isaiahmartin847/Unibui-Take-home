@@ -10,14 +10,14 @@ interface HandleClickProps {
 
 type Props = JobListItem & HandleClickProps;
 
-const SavedJobItem: React.FC<Props> = ({
-  title,
-  company,
+const SavedJobItem = ({
   city,
-  state,
-  id,
+  company,
   handleClick,
-}) => {
+  id,
+  state,
+  title,
+}: Props) => {
   return (
     <div className="flex justify-center w-full">
       <div className="flex flex-col md:flex-row items-center justify-between w-full md:w-5/12 h-40 p-2 my-2 mx-1 border-[1.5px] border-black rounded-lg shadow-md">
