@@ -1,5 +1,5 @@
 import JobItem from "./components/jobList/jobItem";
-import NavBar from "./components/NavBar/NavBar";
+import Navbar from "./components/Navbar/Navbar";
 import { Job } from "./types";
 
 // Disable SSR caching
@@ -54,7 +54,7 @@ export default async function Page({
   if (status === "error") {
     return (
       <div>
-        <NavBar
+        <Navbar
           filter={true}
           linkName="Saved Jobs"
           title="Jobs"
@@ -67,7 +67,7 @@ export default async function Page({
 
   return (
     <div>
-      <NavBar
+      <Navbar
         filter={true}
         linkName="Saved Jobs"
         title="Jobs"

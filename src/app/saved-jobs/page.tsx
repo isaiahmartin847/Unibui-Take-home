@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import SavedJobItem from "../components/savedJobs/savedJobItem";
 import { Job } from "../types";
-import NavBar from "../components/NavBar/NavBar";
 import { ScaleLoader } from "react-spinners";
 import Link from "next/link";
+import Navbar from "../components/Navbar/Navbar";
 
 const SavedJobs = () => {
   const [savedJobs, setSavedJobs] = useState<number[]>([]);
@@ -55,7 +55,7 @@ const SavedJobs = () => {
   if (loading) {
     return (
       <div>
-        <NavBar
+        <Navbar
           linkName="home"
           title="Saved Jobs"
           url="/"
@@ -72,7 +72,7 @@ const SavedJobs = () => {
   if (error) {
     return (
       <div>
-        <NavBar
+        <Navbar
           linkName="home"
           title="Saved Jobs"
           url="/"
@@ -85,7 +85,7 @@ const SavedJobs = () => {
 
   return (
     <div>
-      <NavBar
+      <Navbar
         linkName="home"
         title="Saved Jobs"
         url="/"

@@ -2,7 +2,7 @@
 
 import JobLocation from "@/app/components/jobPage/jobLocation";
 import JobPageItem from "@/app/components/jobPage/jobPageItem";
-import NavBar from "@/app/components/NavBar/NavBar";
+import Navbar from "@/app/components/Navbar/Navbar";
 import { Job } from "@/app/types";
 
 interface ApiResponse {
@@ -37,7 +37,7 @@ const Page = async ({ params }: Props) => {
 
     return (
       <div>
-        <NavBar
+        <Navbar
           filter={false}
           linkName="Home"
           title="Job Details"

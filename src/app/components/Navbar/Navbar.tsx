@@ -12,7 +12,7 @@ interface Props {
   filter: boolean;
 }
 
-const NavBar = ({ title, linkName, url, filter }: Props) => {
+const Navbar = ({ title, linkName, url, filter }: Props) => {
   const [filterToggle, setFilterToggle] = useState<boolean>(false);
 
   const handleClick = () => {
@@ -64,4 +64,4 @@ const NavBar = ({ title, linkName, url, filter }: Props) => {
   );
 };
 
-export default NavBar;
+export default Navbar;
