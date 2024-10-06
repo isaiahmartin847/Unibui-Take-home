@@ -66,7 +66,7 @@ const SavedJobs = () => {
         />
         <div className="flex flex-col items-center mt-10">
           <ScaleLoader color="#f97316" />
-          <div className="text-xl">Loadin</div>
+          <div className="text-xl">Loading...</div>
         </div>
       </div>
     );

@@ -77,6 +77,4 @@ const Page = async ({ params }: Props) => {
   }
 };
 
-// add a location map with a pin
-
 export default Page;
